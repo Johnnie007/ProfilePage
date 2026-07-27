@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-portfolio-page',
     templateUrl: './portfolio-page.component.html',
     styleUrls: ['./portfolio-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PortfolioPageComponent {

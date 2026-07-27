@@ -8,23 +8,4 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     standalone: false
 })
 export class HomepageComponent {
- 
-  portfolioVisible = false;
-  
-  navigateToPortfolio = ()=>{
-    document.getElementById("portfolio")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "nearest"
-    });
-
-  }
-
-  backToTop = () =>{
-    document.getElementById("header")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "nearest"
-    });
-  }
 }

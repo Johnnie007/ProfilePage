@@ -1,27 +1,146 @@
-.homepage-container{
-    height: 100vh;
-    // width: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+// .homepage-container{
+//     height: 100vh;
+//     // width: 100%;
+//     background-color: black;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+// .maintenance-container{
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: space-between;
+//     // width: 31.25rem;
+//     // height: 10.025rem;
+// }
+
+// .maintenance-header{
+//     color:white;
+// }
+// .maintenance-text{
+//     color: white;
+// }
+// .maintenance-subtext{
+//     color: grey;
+// }
+
+// .spin-animation{
+//     animation: spin-animation 10s infinite;
+// }
+
+// .circle{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     width: 100px;
+//     height: 100px;
+//     border: 1px solid green;
+//     border-radius: 50%;
+//     animation: shadow-ripple 10s infinite;
+// }
+
+
+
+// @keyframes spin-animation {
+//   50% {transform: rotate(30deg);}
+// }
+
+
+
+// @keyframes shadow-ripple {
+//   0% {
+//     // width: 100px;
+//     // height: 100px;
+//     transform: scale(1);
+//     border: 1px solid blue;
+//   }
+//   50% {
+//     box-shadow: 0 0 0 1px rgba(255, 165, 0, 0.4);
+//     // width: 150px;
+//     // height: 150px;
+//     transform: scale(1.5);
+//     border: 1px solid blue;
+//   }
+//   100% {
+//     // width: 200px;
+//     // height: 200px;
+//     transform: scale(2);
+//     border: 1px solid blue;
+//   }
+// }
+
+.homepage-container {
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.maintenance-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 31.25rem;
-    height: 10.25rem;
+.maintenance-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.maintenance-header{
-    color:white;
+.maintenance-header, .maintenance-text { color: white; }
+.maintenance-subtext { color: grey; }
+
+/* STATIC CONTAINER: Keeps layout perfectly safe */
+.circle {
+  position: relative; /* Anchor for absolute positioning */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  /* No parent scaling animation here! */
 }
-.maintenance-text{
-    color: white;
+
+/* THE RIPPLE LAYER: This element handles all scaling safely */
+.ripple-bg, .ripple-bg-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: 1;
+  animation: smooth-ripple 5s infinite linear;
 }
-.maintenance-subtext{
-    color: grey;
+.ripple-bg-2 {
+  animation-delay: 2s
+}
+
+.spin-animation {
+  position: relative;
+  z-index: 2;
+  animation: spin-animation 10s infinite;
+}
+
+@keyframes smooth-ripple {
+  0% {
+    transform: scale(1);
+    border: 1px solid orange;
+    box-index: 0 0 0 0px rgba(255, 165, 0, 0);
+    opacity: .5;
+  }
+  50% {
+    transform: scale(1.5);
+    border: 1px solid orange;
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(2);
+    border: 1px solid orange;
+    opacity: 0; 
+  }
+}
+
+@keyframes spin-animation {
+  50% { transform: rotate(30deg); }
 }

@@ -39,7 +39,7 @@ jobs:
       - name: Configure Custom Domain and Routing Fallbacks
         run: |
           echo "johnnieh.me" > dist/profilepage/browser/CNAME
-          cp dist/profilepage/browser.index.html dist/profilepage/browser/404.html
+          cp dist/profilepage/browser/index.html dist/profilepage/browser/404.html
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3

@@ -1,27 +1,65 @@
 # ProfilePage
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+A profile landing page currently displaying a maintenance message.
 
-## Development server
+## Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This repository contains an Angular app built with Angular. The app renders a maintenance screen using `HomepageComponent` and a shared Lucide icon module.
 
-## Code scaffolding
+## Key features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular 22 application
+- Single route (`/`) served by `HomepageComponent`
+- Shared icon module using `@lucide/angular`
+- Maintenance page design with animated icon and status text
+
+## Project structure
+
+- `src/app/app.module.ts` - main application module
+- `src/app/app-routing.module.ts` - routing configuration
+- `src/app/app.component.html` - root template with `router-outlet`
+- `src/app/homepage/homepage.component.*` - maintenance page component
+- `src/app/shared-icons.module.ts` - shared icon import/export module
+
+## Setup
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm start
+```
+
+Open the app at:
+
+```text
+http://localhost:4200/
+```
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Build the application for production:
 
-## Running unit tests
+```bash
+npm run build
+```
 
-Run `ng test` to execute the unit tests
+The built files are written to the `dist/` folder.
 
-## Running end-to-end tests
+## Tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run unit tests with:
 
-## Further help
+```bash
+npm test
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Notes
+
+- The current app is a minimal profile/maintenance page and does not include additional pages or e2e tests.
+- The route configuration currently maps the root path to `HomepageComponent`.

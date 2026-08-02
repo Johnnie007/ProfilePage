@@ -37,6 +37,7 @@
   border-radius: 50%;
   z-index: 1;
   animation: smooth-ripple 5s infinite linear;
+  opacity: 0;
 }
 .ripple-bg-2 {
   animation-delay: 2s

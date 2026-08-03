@@ -1,9 +1,9 @@
-# name: Build and Deploy to PROD
-# on:
-#   push:
-#     branches:
-#       - main
-#   workflow_dispatch:
+name: Build and Deploy to PROD
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 # permissions:
 #   contents: read

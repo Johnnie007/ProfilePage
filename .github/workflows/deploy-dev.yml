@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - development
+      - configure/environment
   workflow_dispatch:
 
 permissions:

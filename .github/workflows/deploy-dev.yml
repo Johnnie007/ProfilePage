@@ -38,12 +38,12 @@ jobs:
         run: npm run build -- --configuration=development --base-href=/profile-page-dev/
 
       - name: Configure Routing Fallbacks
-        run: cp dist/profile-page/browser/index.html dist/profile-page/browser/404.html
+        run: cp dist/profile-page-dev/browser/index.html dist/profile-page/browser/404.html
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist/profile-page/browser'
+          path: './dist/profile-page-dev/browser'
 
       - name: Deploy to Github Pages
         id: deployment

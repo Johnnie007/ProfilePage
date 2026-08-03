@@ -1,8 +1,9 @@
-name: Build and Deploy
+name: Build and Deploy to DEV
 on:
   push:
     branches:
-      - main
+      - development
+      - configure/environment
   workflow_dispatch:
 
 permissions:
@@ -34,12 +35,10 @@ jobs:
         run: npm ci
 
       - name: Build Angular Application
-        run: npm run build -- --base-href=/
+        run: npm run build --configuration=development --base-href=/profile-page-dev
 
       - name: Configure Custom Domain and Routing Fallbacks
-        run: |
-          echo "johnnieh.me" > dist/profile-page/browser/CNAME
-          cp dist/profile-page/browser/index.html dist/profile-page/browser/404.html
+        run: cp dist/profile-page/browser/index.html dist/profile-page/browser/404.html
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3

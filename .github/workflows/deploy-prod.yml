@@ -98,4 +98,4 @@ jobs:
           git commit -m "Production deploy from Dev Repo commit ${{ github.sha }}"
           
           # This clean structure eliminates all hardcoded URL typos
-          git push --force "https://$PROD_REPO_TOKEN@://github.com/${GH_USER}/${GH_REPO}.git" main
+          git push --force "https://$PROD_REPO_TOKEN@github.com/${GH_USER}/${GH_REPO}.git" main

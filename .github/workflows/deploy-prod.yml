@@ -104,4 +104,4 @@ jobs:
           git commit -m "Production deploy from Dev Repo commit ${{ github.sha }}"
 
           # 5. Force push this single-commit state to the tracking branch of your PROD repo
-          git push --force "https://${PROD_REPO_TOKEN}@://github.com" main
+          git push --force "https://${secrets.PROD_REPO_TOKEN}@://github.com" main

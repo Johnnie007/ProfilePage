@@ -85,23 +85,17 @@ jobs:
 
       - name: Push to Production Repository
         env:
-          # A classic GitHub Personal Access Token (PAT) with 'repo' scope
           PROD_REPO_TOKEN: ${{ secrets.PROD_REPO_TOKEN }}
+          GH_USER: "johnnie007"
+          GH_REPO: "profile-page-prod"
         run: |
-          # 1. Navigate into the freshly built Angular distribution folder
           cd dist/profile-page/browser
-
-          # 2. Suppress default branch hints and initialize specifically as 'main'
           git config --global init.defaultBranch main
           git init
-          
-          # 3. Configure the bot identity for the commit history
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # 4. Stage and commit all compiled production assets
           git add .
           git commit -m "Production deploy from Dev Repo commit ${{ github.sha }}"
-
-          # 5. Force push this single-commit state to the tracking branch of your PROD repo
-          git push --force "https://$PROD_REPO_TOKEN@://github.com" main
+          
+          # This clean structure eliminates all hardcoded URL typos
+          git push --force "https://${PROD_REPO_TOKEN}@://github.com{GH_USER}/${GH_REPO}.git" main

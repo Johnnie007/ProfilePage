@@ -91,12 +91,13 @@ jobs:
           # 1. Navigate into the freshly built Angular distribution folder
           cd dist/profile-page/browser
 
-          # 2. Initialize a fresh, completely empty git repository in this folder
+          # 2. Suppress default branch hints and initialize specifically as 'main'
+          git config --global init.defaultBranch main
           git init
           
           # 3. Configure the bot identity for the commit history
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@://github.com"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
           # 4. Stage and commit all compiled production assets
           git add .

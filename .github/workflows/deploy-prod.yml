@@ -1,5 +1,8 @@
 name: Build and Deploy to PROD
 on:
+  push:
+    branches:
+      - configure/environment
   workflow_dispatch:
 
 permissions:

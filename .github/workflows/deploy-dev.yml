@@ -11,8 +11,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: "pages-dev"
+  cancel-in-progress: true
 
 jobs:
   deploy:

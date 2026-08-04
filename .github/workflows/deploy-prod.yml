@@ -1,30 +1,72 @@
-name: Build and Deploy to PROD
+# name: Build and Deploy to PROD
+# on:
+#   push:
+#     branches:
+#       - configure/environment
+#   workflow_dispatch:
+
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
+
+# concurrency:
+#   group: "pages-prod"
+#   cancel-in-progress: true
+
+# jobs:
+#   deploy:
+#     environment:
+#       name: github-pages
+#       url: ${{ steps.deployment.outputs.page_url }}
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v4
+
+#       - name: Set up node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 24
+#           cache: 'npm'
+
+#       - name: Install Dependencies
+#         run: npm ci
+
+#       - name: Build Angular Application
+#         run: npm run build -- --configuration=production --base-href=/
+
+#       - name: Configure Custom Domain and Routing Fallbacks
+#         run: |
+#           echo "johnnieh.me" > dist/profile-page/browser/CNAME
+#           cp dist/profile-page/browser/index.html dist/profile-page/browser/404.html
+
+#       - name: Upload Artifacts
+#         uses: actions/upload-pages-artifact@v3
+#         with:
+#           path: './dist/profile-page/browser'
+
+#       - name: Deploy to Github Pages
+#         id: deployment
+#         uses: actions/deploy-pages@v4
+
+
+name: Push Build to PROD Repo
+
 on:
   push:
     branches:
-      - configure/environment
+      - profile-page-prod
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set up node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -36,16 +78,29 @@ jobs:
       - name: Build Angular Application
         run: npm run build -- --configuration=production --base-href=/
 
-      - name: Configure Custom Domain and Routing Fallbacks
+      - name: Configure Custom Domain
         run: |
           echo "johnnieh.me" > dist/profile-page/browser/CNAME
           cp dist/profile-page/browser/index.html dist/profile-page/browser/404.html
 
-      - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist/profile-page/browser'
+      - name: Push to Production Repository
+        env:
+          # A classic GitHub Personal Access Token (PAT) with 'repo' scope
+          PROD_REPO_TOKEN: ${{ secrets.PROD_REPO_TOKEN }}
+        run: |
+          # 1. Navigate into the freshly built Angular distribution folder
+          cd dist/profile-page/browser
 
-      - name: Deploy to Github Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          # 2. Initialize a fresh, completely empty git repository in this folder
+          git init
+          
+          # 3. Configure the bot identity for the commit history
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@://github.com"
+
+          # 4. Stage and commit all compiled production assets
+          git add .
+          git commit -m "Production deploy from Dev Repo commit ${{ github.sha }}"
+
+          # 5. Force push this single-commit state to the tracking branch of your PROD repo
+          git push --force "https://${PROD_REPO_TOKEN}@://github.com" main

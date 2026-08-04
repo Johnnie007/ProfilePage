@@ -19,6 +19,8 @@
     "@angular/platform-browser-dynamic": "^22.0.8",
     "@angular/router": "^22.0.8",
     "@lucide/angular": "^1.27.0",
+    "@microsoft/eslint-formatter-sarif": "^3.1.0",
+    "eslint": "^8.10.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.1"
@@ -28,15 +30,12 @@
     "@angular/cli": "~22.0.8",
     "@angular/compiler-cli": "^22.0.8",
     "@types/node": "^26.1.2",
+    "@typescript-eslint/eslint-plugin": "^8.66.0",
     "@vitest/browser": "^4.1.10",
     "inquirer": "^14.0.2",
     "istanbul-lib-instrument": "^6.0.3",
     "jsdom": "^30.0.0",
     "typescript": "~6.0.3",
-    "vitest": "^4.1.10",
-    "eslint": "8.57.0",
-    "@microsoft/eslint-formatter-sarif": "3.1.0",
-    "@typescript-eslint/parser": "8.65.0",
-    "@typescript-eslint/eslint-plugin": "8.65.0"
+    "vitest": "^4.1.10"
   }
 }

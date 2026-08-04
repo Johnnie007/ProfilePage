@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { LucideWrench, LucideAArrowUp} from '@lucide/angular';
+import { LucideWrench} from '@lucide/angular';
 
 @NgModule({
   imports: [LucideWrench],

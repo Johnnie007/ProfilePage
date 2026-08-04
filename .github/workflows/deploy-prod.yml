@@ -1,0 +1,50 @@
+name: Push Build to PROD Repo
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Angular Application
+        run: npm run build -- --configuration=production --base-href=/
+
+      - name: Configure Custom Domain
+        run: |
+          echo "johnnieh.me" > dist/profile-page/browser/CNAME
+          cp dist/profile-page/browser/index.html dist/profile-page/browser/404.html
+
+      - name: Push to Production Repository
+        env:
+          PROD_REPO_TOKEN: ${{ secrets.PROD_REPO_TOKEN }}
+          GH_USER: "johnnie007"
+          GH_REPO: "profile-page-prod"
+        run: |
+          cd dist/profile-page/browser
+          git config --global init.defaultBranch main
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Production deploy from Dev Repo commit ${{ github.sha }}"
+          
+          # This clean structure eliminates all hardcoded URL typos
+          git push --force "https://$PROD_REPO_TOKEN@github.com/${GH_USER}/${GH_REPO}.git" main

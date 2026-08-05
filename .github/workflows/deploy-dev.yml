@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - development
-      - configure/environment
   workflow_dispatch:
 
 permissions:
@@ -12,8 +11,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: "pages-dev"
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -35,9 +34,9 @@ jobs:
         run: npm ci
 
       - name: Build Angular Application
-        run: npm run build --configuration=development --base-href=/profile-page-dev
+        run: npm run build -- --configuration=development --base-href=/profile-page-dev/
 
-      - name: Configure Custom Domain and Routing Fallbacks
+      - name: Configure Routing Fallbacks
         run: cp dist/profile-page/browser/index.html dist/profile-page/browser/404.html
 
       - name: Upload Artifacts

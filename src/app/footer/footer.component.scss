@@ -1,5 +1,6 @@
 .footer-container{
     display: flex;
+    height: 2rem;
     justify-content: space-between;
     align-items: center;
 }
@@ -8,8 +9,13 @@
     margin-left: 1.25rem;
 }
 .footer-social-container{
-    width: 4.5rem;
+    width: 5rem;
     display: flex;
     justify-content: space-between;
     margin-right: 1rem;
+}
+
+.social-icon{
+    width: 1.87rem;
+    height: 1.875rem;
 }

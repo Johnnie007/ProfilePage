@@ -1,0 +1,28 @@
+.navigation-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.name{
+    width: 125px;
+    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation-links-container{
+    width: 500px;
+    margin-right: 60px;
+}
+
+.navigation-link{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.link{
+    text-decoration: none;
+    color: #727272;
+}

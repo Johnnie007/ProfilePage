@@ -1,0 +1,42 @@
+.navigation-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-container{
+    width: 11.5rem;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name{
+    font-family: 'PhilosopherRegular';
+    font-size: 30px
+}
+
+.navigation-links-container{
+    width: 31.25rem;
+    margin-right: 3.75rem;
+}
+
+.navigation-link{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.link{
+    text-decoration: none;
+    font-family: 'PhilosopherRegular';
+    color: #727272;
+    padding-bottom: 5px;
+}
+
+
+.active-link{
+    color: #000;
+    font-family: 'PhilosopherBold';
+    border-bottom: 1px solid #000;
+}

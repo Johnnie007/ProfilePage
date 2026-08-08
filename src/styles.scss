@@ -18,6 +18,31 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'PhilosopherBold';
+    src: url("./assets/fonts/philosopher-font/Philosopher-Bold.ttf");
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PhilosopherBold';
+    src: url("./assets/fonts/philosopher-font/Philosopher-BoldItalic.ttf");
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'PhilosopherBold';
+    src: url("./assets/fonts/philosopher-font/Philosopher-Italic.ttf");
+    font-weight: regular;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'PhilosopherRegular';
+    src: url("./assets/fonts/philosopher-font/Philosopher-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
 body, h1, h2, p, div{
     margin: 0;
 }

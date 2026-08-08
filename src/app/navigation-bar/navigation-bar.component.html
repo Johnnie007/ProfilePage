@@ -1,18 +1,12 @@
-<!-- TODO: 
-- Add font
-- Active Links route to different pages
-- Acitve link Highlight
--->
-
 <div class="navigation-container">
 
-    <div class="name">
-        <p>Johnnie Hicks</p>
+    <div class="name-container">
+        <p class="name">Johnnie Hicks</p>
     </div>
 
     <nav class="navigation-links-container">
         <ul class="navigation-link">
-            <li><a class="link" routerLinkActive="active-link" routerLink="/">About</a></li>
+            <li><a class="link" routerLinkActive="active-link" routerLink="/" [routerLinkActiveOptions]="{exact:true}">About</a></li>
             <li><a class="link" routerLinkActive="active-link" routerLink="/projects">Projects</a></li>
             <li><a class="link" routerLinkActive="active-link" routerLink="/books">Books</a></li>
             <li><a class="link" routerLinkActive="active-link" routerLink="/shop">Shop</a></li>

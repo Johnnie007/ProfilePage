@@ -3,12 +3,17 @@
     justify-content: space-between;
 }
 
-.name{
-    width: 7.8rem;
+.name-container{
+    width: 11.5rem;
     margin-left: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.name{
+    font-family: 'PhilosopherRegular';
+    font-size: 30px
 }
 
 .navigation-links-container{
@@ -24,5 +29,14 @@
 
 .link{
     text-decoration: none;
+    font-family: 'PhilosopherRegular';
     color: #727272;
+    padding-bottom: 5px;
+}
+
+
+.active-link{
+    color: #000;
+    font-family: 'PhilosopherBold';
+    border-bottom: 1px solid #000;
 }
